@@ -1,3 +1,3 @@
 function (key, values) { 
-  return Array.sum(values)/values.length;
+	return Array.sum(values)/values.length;
 }
