@@ -1,4 +1,4 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python2
 from pymongo.connection import MongoClient
 import csv
 import json
@@ -15,7 +15,9 @@ db = conn.reddit
 print "Cleaning DB collections %s.%s" % ("reddit", "posts")
 db.posts.remove()
 
+row = 0
 for it in reader:
+    row += 1
     try:
         it['total_votes'] = int(it['total_votes'] )
         it['number_of_upvotes'] = int(it['number_of_upvotes'] )
@@ -24,7 +26,7 @@ for it in reader:
         it['number_of_comments'] = int(it['number_of_comments'] )
         db.posts.insert(it)
     except Exception as e:
-        print e, "while inserting", it
+        print e, "while inserting row " + str(row), it
 
 print "Inserted %d records" % db.posts.count()
 assert db.posts.count() == 269689, "Missing records on DB, inserted: %d" % db.posts.count()
