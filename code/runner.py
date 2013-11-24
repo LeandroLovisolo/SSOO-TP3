@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
 from os import listdir
 from os.path import join
 from bson.code import Code
@@ -20,8 +20,8 @@ def run(code, incoll = 'posts', outcoll = 'default'):
                 map_func = Code(mapping_func_file.read())
                 reduce_func = Code(reduce_func_file.read()) 
                 collection.map_reduce(map_func, reduce_func, outcoll)
-        print "\tEl resultado de la operacion se encuentra almacenado en la colleccion %s." % ej
-        print "\tEl contenido generado es %s " % " ".join([ str(x) for x in getattr(db, ej).find()])
+        print "\tEl resultado de la operacion se encuentra almacenado en la colleccion %s." % outcoll
+        print "\tEl contenido generado es %s " % " ".join([ str(x) for x in getattr(db, outcoll).find()])
         
 
 if __name__ == '__main__':
