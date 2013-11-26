@@ -7,5 +7,9 @@ function (key, values) {
 		sum_total_votes += values[i].total_votes;
 	}
 
-	return {upvotes: sum_upvotes, total_votes: sum_total_votes};
+	return {
+            upvotes: sum_upvotes, 
+            total_votes: sum_total_votes,
+            positivity: sum_upvotes * 100 / sum_total_votes
+        };
 }
