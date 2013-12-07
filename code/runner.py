@@ -19,7 +19,7 @@ def run(code, incoll = 'posts', outcoll = 'default'):
             with open(join(ej, 'reduce.js')) as reduce_func_file:
                 map_func = Code(mapping_func_file.read())
                 reduce_func = Code(reduce_func_file.read()) 
-                collection.map_reduce(map_func, reduce_func, outcoll)
+                db[incoll].map_reduce(map_func, reduce_func, outcoll)
         print "\tEl resultado de la operacion se encuentra almacenado en la colleccion %s." % outcoll
         print "\tEl contenido generado es %s " % " ".join([ str(x) for x in getattr(db, outcoll).find()])
         

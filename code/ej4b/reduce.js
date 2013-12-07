@@ -1,5 +1,5 @@
 function (key, values) { 
     return values.sort(function(a, b) {
-       return b.score - a.score;
+       return b.number_of_comments - a.number_of_comments;
     })[0];
 }

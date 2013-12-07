@@ -4,6 +4,8 @@
 
 # Miscelánea
 /slides.pdf
+.nfs*
+
 
 # LaTeX
 informe.pdf
