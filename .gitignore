@@ -4,3 +4,10 @@
 
 # Miscelánea
 /slides.pdf
+
+# LaTeX
+informe.pdf
+tex/*.pdf
+tex/*.aux
+tex/*.toc
+tex/*.log
