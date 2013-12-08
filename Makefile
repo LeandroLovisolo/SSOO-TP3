@@ -1,5 +1,9 @@
 BUNDLE_DIRECTORY = SSOO-TP3
-BUNDLE_FILENAME = SSOO-TP3.tar.gz
+BUNDLE_FILENAME  = SSOO-TP3.tar.gz
+
+.PHONY: all clean bundle
+
+all: informe.pdf
 
 informe.pdf: tex/*.tex
 	cd tex; pdflatex -interactive=nonstopmode -halt-on-error informe.tex
