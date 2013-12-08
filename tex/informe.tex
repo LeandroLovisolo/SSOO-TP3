@@ -172,26 +172,42 @@ Lautaro José Petaccio    & 443/11 & lausuper@gmail.com\\
 
 \section{Análisis del cuerpo de datos}
 
-\newcommand{\map}{\textit{map} }
-\newcommand{\reduce}{\textit{reduce} }
+\newcommand{\map}{\emph{map} }
+\newcommand{\reduce}{\emph{reduce} }
 
 
-\subsection{¿Es la comunidad en promedio más \textit{upvoter} o más \textit{downvoter}?}
+\subsection{¿Es la comunidad en promedio más \emph{upvoter} o más \emph{downvoter}?}
 
-En el paso \map se lleva cada entrada a una estructura con los siguientes campos:
+En el paso \map se lleva cada submission a una estructura con los siguientes campos:
 
 \begin{description}
 	\item[upvotes:] Cantidad de votos positivos.
 	\item[total\_upvotes:] Cantidad total de votos.
-	\item[positivity:] Campo usado en el paso \reduce. Entero con valor cero.
+	\item[positivity:] Campo usado en el paso \reduce. Entero con valor 0.
 \end{description}
 
 En el paso \reduce se acumula la suma de todos los votos positivos en el campo \textbf{upvotes}, se acumula el total de los votos en el campo \textbf{total\_upvotes} y se calcula el porcentaje de votos positivos en el campo \textbf{positivity}, de acuerdo a la fórmula
 
 $$\textbf{positivity} = \frac{\textbf{upvotes} \times 100}{\textbf{total\_upvotes}}.$$
 
-La comunidad se determina más \textit{upvoter} si $\textbf{positivity} > 50$, o \textit{downvoter} en caso contrario.
+La comunidad se determina más \emph{upvoter} si $\textbf{positivity} > 50$, o \emph{downvoter} en caso contrario.
 
+
+\subsection{Promedio de comentarios por submission}
+
+En el paso \map se lleva cada submission a una estructura con los siguientes campos:
+
+\begin{description}
+	\item[comments:] Cantidad de comentarios de la submission.
+	\item[submissions:] Campo usado en el paso \reduce para acumular la cantidad de submissions en el cuerpo de datos. Entero con valor 1.
+	\item[avgComments:] Campo usado en el paso \reduce para calcular el promedo de comentarios por submission. Entero con valor 0.
+\end{description}
+
+En el paso \reduce se acumula el total de comentarios en el campo \textbf{comments}, se acumula el total de submissions en el campo \textbf{submissions} y se calcula el promedio de comentarios por submission en el campo \textbf{avgComments}, de acuerdo a la fórmula
+
+$$\textbf{avgComments} = \frac{\textbf{comments}}{\textbf{submissions}}.$$
+
+El promedio de comentarios por submission en la comunidad es entonces el valor del campo \textbf{avgComments}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Análisis de escalabilidad                                                 %%
