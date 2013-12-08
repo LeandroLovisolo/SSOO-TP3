@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[spanish,es-ucroman,es-noquoting]{babel}
 \usepackage{setspace}
+\usepackage{xspace}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{amsmath}
@@ -100,6 +101,12 @@
 %%%%%%%%%% Miscelánea - Fin %%%%%%%%%%
 
 
+%%%%%%%%%% Macros para el análisis de las consultas - Inicio %%%%%%%%%%
+\newcommand{\map}{\emph{map}\xspace}
+\newcommand{\reduce}{\emph{reduce}\xspace}
+%%%%%%%%%% Macros para el análisis de las consultas - Fin %%%%%%%%%%
+
+
 \begin{document}
 
 
@@ -172,13 +179,10 @@ Lautaro José Petaccio    & 443/11 & lausuper@gmail.com\\
 
 \section{Análisis del cuerpo de datos}
 
-\newcommand{\map}{\emph{map} }
-\newcommand{\reduce}{\emph{reduce} }
-
 
 \subsection{¿Es la comunidad en promedio más \emph{upvoter} o más \emph{downvoter}?}
 
-En el paso \map se lleva cada submission a una estructura con los siguientes campos:
+En el paso \map se emite una misma key para cada submission, asociada a una estructura con los siguientes campos:
 
 \begin{description}
 	\item[upvotes:] Cantidad de votos positivos.
@@ -195,7 +199,7 @@ La comunidad se determina más \emph{upvoter} si $\textbf{positivity} > 50$, o \
 
 \subsection{Promedio de comentarios por submission}
 
-En el paso \map se lleva cada submission a una estructura con los siguientes campos:
+En el paso \map se emite una misma key para cada submission, asociada a una estructura con los siguientes campos:
 
 \begin{description}
 	\item[comments:] Cantidad de comentarios de la submission.
@@ -208,6 +212,30 @@ En el paso \reduce se acumula el total de comentarios en el campo \textbf{commen
 $$\textbf{avgComments} = \frac{\textbf{comments}}{\textbf{submissions}}.$$
 
 El promedio de comentarios por submission en la comunidad es entonces el valor del campo \textbf{avgComments}.
+
+
+\subsection{El usuario con la suma (score) más alta de todos.}
+
+Esta consulta devuelve el usuario tal que la suma del campo \textbf{score} de todas las submissions cuyo autor sea dicho usuario es máxima.
+
+Se divide la consulta en dos pares de operaciones \map/\reduce.
+
+En el primer \map se emite una key cuyo valor es el autor de la submission, asociada a una estructura con los siguientes campos:
+
+\begin{description}
+	\item[username:] El autor de la submission.
+	\item[score:] El score de la submission.
+\end{description}
+
+En el primer \reduce se acumula el score total de las submissions del usuario correspondiente a cada key bajo el campo \textbf{score}.
+
+Luego del primer \map/\reduce se obtiene una colección con campos \textbf{username} y \textbf{score}, que para cada usuario nos indica la suma de los scores de todas las submissions cuyo autor es ese usuario.
+
+El segundo \map agrupa bajo un mismo key todas las entradas de la colección obtenida en el \map/\reduce anterior, dejando los campos \textbf{username} y \textbf{score} intactos.
+
+El segundo \reduce busca la entrada con máximo score y devuelve esa entrada sin modificarla.
+
+El resultado del segundo \map/\reduce es una estructura con campos \textbf{username} y \textbf{score} que indica el usuario con la máxima suma de scores de submissions y el valor de dicha suma.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
