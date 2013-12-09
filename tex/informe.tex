@@ -309,8 +309,36 @@ Distinguimos dos categorías principales de soluciones bajo este paradigma: Infr
 
 \subsection{Alternativas de \emph{IaaS} y \emph{PaaS}}
 
+A continuación describimos brevemente algunos de los servicios más populares actualmente en el mercado.
+
+
+\subsubsection{Amazon EC2}
+
+Pendiente.
+
+
+\subsubsection{Rackspace}
+
+Pendiente.
+
+
+\subsubsection{Linode}
+
+Pendiente.
+
+
+\subsubsection{MongoHQ}
+
+Pendiente.
+
+
+\subsubsection{MongoLab}
+
+Pendiente.
+
 
 \subsection{De la nube al hardware propio}
+
 El paso de una solución en la nube a una basada en hardware propio puede traer consigo muchos inconvenientes. Tenemos que tener en cuenta no sólo los inconvenientes generales que involucra este cambio, si no también los específicos relacionados con la solución sobre MongoDB.
 
 En principio hay que tener en cuenta que al momento de hacer el cambio definitivo, en caso de no tomar los recaudos necesarios, puede existir un downtime del servicio, el cual es súmamente indeseable. Esto se puede evitar por ejemplo con la implementación de un balanceador de carga que distribuya el tráfico gradualmente desde la infraestructura en la nube hacia nuestros servidores locales.
@@ -320,5 +348,6 @@ Algo muy importante es el costo que implica este cambio: la adquisición de todo
 Para analizar el caso particular de nuestra implementación, tenemos que tener en cuenta que para aprovechar MongoDB nos conviene tener un crecimiento horizontal en función de la cantidad de datos a procesar. En el caso de la solución en la nube, era algo muy simple de implementar, pues las VM's se pueden crear a demanda en cuestión de segundos y de forma transparente. Pero cuando se tiene hardware propio hay que tener en cuenta que el crecimiento de la infraestructura no es tan simple de lograr; se pueden tener los recursos computacionales virtualizados, pero será necesario adquirir más hardware eventualmente.
 
 También hay que considerar que en algunos momentos, el procesamiento puede alcanzar picos durante los cuales sea necesario aumentar la capacidad de procesamiento del sistema. Esto es algo que también sucede de forma transparente en caso de ser necesario cuando estamos trabajando en la nube, pero no así cuando tenemos nuestros propios data centers. Nuevamente, podemos tener los recursos virtualizados, pero el hardware tiene un límite y es algo que ya no podemos obviar.
+
 
 \end{document}
