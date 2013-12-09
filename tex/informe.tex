@@ -274,7 +274,7 @@ Antes de comenzar con el análisis en sí de las soluciones disponibles en el me
 
 \subsection{Introducción}
 
-Cloud Computing es un término muy discutido durante los últimos años, y la cantidad de servicios que lo proveen aumenta año tras año. Muchas empresas han incursionado en este modelo de negocio, y muchas más han sido las que han aprovechado su potencial. Aún así, no hay ningún tipo de estandarización de los servicios ni de la definición de los mismos conceptos. En principio vamos a tratar de establecer algunas guías y definiciones, para luego poder centrarnos en nuestras necesidades particulares alrededor de mongoDB.
+Cloud Computing es un término muy discutido durante los últimos años, y la cantidad de servicios que lo proveen aumenta año tras año. Muchas empresas han incursionado en este modelo de negocio, y muchas más han sido las que han aprovechado su potencial. Aún así, no hay ningún tipo de estandarización de los servicios ni de la definición de los mismos conceptos. En principio vamos a tratar de establecer algunas guías y definiciones, para luego poder centrarnos en nuestras necesidades particulares alrededor de MongoDB.
 
 
 \subsection{Definición de \emph{Cloud Computing}}
@@ -311,13 +311,13 @@ Distinguimos dos categorías principales de soluciones bajo este paradigma: Infr
 
 
 \subsection{De la nube al hardware propio}
-El paso de una solución en la nube a una basada en hardware propio puede traer consigo muchos inconvenientes. Tenemos que tener en cuenta no sólo los inconvenientes generales que involucra este cambio, si no también los específicos relacionados con la solución sobre mongoDB.
+El paso de una solución en la nube a una basada en hardware propio puede traer consigo muchos inconvenientes. Tenemos que tener en cuenta no sólo los inconvenientes generales que involucra este cambio, si no también los específicos relacionados con la solución sobre MongoDB.
 
 En principio hay que tener en cuenta que al momento de hacer el cambio definitivo, en caso de no tomar los recaudos necesarios, puede existir un downtime del servicio, el cual es súmamente indeseable. Esto se puede evitar por ejemplo con la implementación de un balanceador de carga que distribuya el tráfico gradualmente desde la infraestructura en la nube hacia nuestros servidores locales; una vez que el tráfico sea completamente soportado por nuestros servidores, puede darse de baja el sistema del proveedor.
 
 Algo muy importante es el costo que implica este cambio: la adquisición de todo el equipamiento necesario, que no sólo consiste en los servidores en sí, si no también en el lugar físico del data center, sistemas de refrigeración, personal de mantenimiento y seguridad, y una larga lista de etcéteras. Este costo se puede amortizar en varios años, pero de todas formas es una inversión muy grande que se realiza en un lapso corto de tiempo, y se pierde la constancia que nos ofrece un servicio en la nube con precios que escalan de forma gradual. Y no sólo es un problema de costos del equipamiento adquirido, también hay que encargarse de que el mantenimiento del mismo se haga de manera correcta, un problema del que antes no teníamos que preocuparnos.
 
-Para analizar el caso particular de nuestra implementación, tenemos que tener en cuenta que para aprovechar mongoDB nos conviene tener un crecimiento horizontal en función de la cantidad de datos a procesar. En el caso de la solución en la nube, era algo muy simple de implementar, pues las VM's se pueden crear a demanda en cuestión de segundos y de forma transparente. Pero cuando se tiene hardware propio hay que tener en cuenta que el crecimiento de la infraestructura no es tan simple de lograr; se pueden tener los recursos computacionales virtualizados, pero será necesario adquirir más hardware eventualmente.
+Para analizar el caso particular de nuestra implementación, tenemos que tener en cuenta que para aprovechar MongoDB nos conviene tener un crecimiento horizontal en función de la cantidad de datos a procesar. En el caso de la solución en la nube, era algo muy simple de implementar, pues las VM's se pueden crear a demanda en cuestión de segundos y de forma transparente. Pero cuando se tiene hardware propio hay que tener en cuenta que el crecimiento de la infraestructura no es tan simple de lograr; se pueden tener los recursos computacionales virtualizados, pero será necesario adquirir más hardware eventualmente.
 
 También hay que considerar que en algunos momentos, el procesamiento puede alcanzar picos durante los cuales sea necesario aumentar la capacidad de procesamiento del sistema. Esto es algo que también sucede de forma transparente en caso de ser necesario cuando estamos trabajando en la nube, pero no así cuando tenemos nuestros propios data centers. Nuevamente, podemos tener los recursos virtualizados, pero el hardware tiene un límite y es algo que ya no podemos obviar.
 
