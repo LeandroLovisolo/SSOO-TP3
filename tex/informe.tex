@@ -227,6 +227,8 @@ En el primer \map se emite una key cuyo valor es el autor de la submission, asoc
 	\item[score:] El score de la submission.
 \end{description}
 
+Si el usuario de la submission es nulo, la función \map termina sin emitir ningún valor.
+
 En el primer \reduce se acumula el score total de las submissions del usuario correspondiente a cada key bajo el campo \textbf{score}.
 
 Luego del primer \map/\reduce se obtiene una colección con campos \textbf{username} y \textbf{score}, que para cada usuario nos indica la suma de los scores de todas las submissions cuyo autor es ese usuario.
@@ -236,6 +238,28 @@ El segundo \map agrupa bajo un mismo key todas las entradas de la colección obt
 El segundo \reduce busca la entrada con máximo score y devuelve esa entrada sin modificarla.
 
 El resultado del segundo \map/\reduce es una estructura con campos \textbf{username} y \textbf{score} que indica el usuario con la máxima suma de scores de submissions y el valor de dicha suma.
+
+
+\subsection{Subreddit más popular}
+
+Esta consulta devuelve el subreddit con el mayor número de comentarios; es decir, el subreddit tal que la suma de los comentarios de todas las submissions dentro de ese subreddit es máxima.
+
+En el primer \map se emite una key cuyo valor es el subreddit de la submission, asociada a una estructura con los siguientes campos:
+
+\begin{description}
+	\item[subreddit:] El subreddit de la submission.
+	\item[number\_of\_comments:] El número de comentarios de la submission.
+\end{description}
+
+En el primer \reduce se acumula el total de comentarios de las submissions en el subreddit correspondiente a cada key bajo el campo \textbf{number\_of\_comments}.
+
+Luego del primer \map/\reduce se obtiene una colección con campos \textbf{subreddit} y \textbf{number\_of\_comments}, que para cada subreddit nos indica la suma del número de comentarios de todas las submissions dentro de ese subreddit.
+
+El segundo \map agrupa bajo un mismo key todas las entradas de la colección obtenida en el \map/\reduce anterior, dejando los campos \textbf{subreddit} y \textbf{number\_of\_comments} intactos.
+
+El segundo \reduce busca la entrada con máximo número de comentarios y devuelve esa entrada sin modificarla.
+
+El resultado del segundo \map/\reduce es una estructura con campos \textbf{subreddit} y \textbf{number\_of\_comments} que indica el subreddit con la máxima cantidad de comentarios realizados en submissions dentro de ese subreddit y el valor de dicha suma.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
