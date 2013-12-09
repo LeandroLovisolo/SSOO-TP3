@@ -347,16 +347,23 @@ Pendiente.
 
 \subsubsection{MongoHQ}
 
-MongoHQ ofrece los siguientes servicios:
+MongoHQ es una solución \emph{PaaS} que ofrece un cluster MongoDB completamente administrado por el proveedor. Sus principales características son:
 
 \begin{itemize}
-	\item Frontend web para realizar consultas desde esta.
-	\item Herramientas de monitoreo y optimización con detalle sobre los recursos utilizados.
-	\item Escalado automático de recursos sin downtime (RAM, CPU, Disk I/O).
-	\item Monitoreo de las bases de datos para asegurar buen funcionamiento.
-	\item Posibilidad de utilizar SSD's.
-	\item Opciones iniciales baratas, \$15 y \$49 mensual y otras más completas desde \$250.
+	\item Permite customizar la capacidad de almacenamiento del cluster y el tipo de almacenamiento (HDD vs SSD.)
+
+	\item Ofrece una consola web para administrar el cluster, hacer consultas, realizar backups, etc.
+
+	\item Ofrece herramientas de monitoreo y control de sanidad adicionales que normalmente no están disponibles en una instalación MongoDB por defecto.
+
+	\item Permite escalar automáticamente el cluster sin downtime, agregando almacenamiento o nodos adicionales de acuerdo a lo necesario.
+
+	\item Ofrece planes tanto para emprendimientos pequeños como para proyectos grandes.
 \end{itemize}
+
+Es un servicio ideal para equipos que necesitan disponer rápidamente de un cluster MongoDB sin perder tiempo en instalar y administrar un cluster ellos mismos, para proyectos que desean evaluar MongoDB o prototipar una solución sin grandes inversiones de tiempo y esfuerzo y para emprendimientos que necesitan salir rápido al mercado.
+
+Su principal desventaja es que es menos flexible que un servicio que ofrece más granularidad y que se encarece rápidamente a medida que crece el volúmen de datos procesados comparado con mantener un cluster propio sobre una solución \emph{IaaS} como Amazon EC2. Por estos motivos MongoHQ no es una opción recomendable para proyectos grandes.
 
 
 \subsubsection{MongoLab}
