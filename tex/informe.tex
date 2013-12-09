@@ -314,7 +314,25 @@ A continuación describimos brevemente algunos de los servicios más populares a
 
 \subsubsection{Amazon EC2}
 
-Pendiente.
+Amazon Elastic Cloud Computing, o EC2, es uno de los proveedores \emph{IaaS} más avanzados del mercado. Sus principales características:
+
+\begin{itemize}
+	\item Permite customizar profundamente los parámetros de las máquinas virtuales, ya sea memoria RAM, tipo de CPU, cantidad de núcleos, tipo y espacio de almacenamiento, sistema operativo, software preinstalado, hardware especial como GPUs y placas de red de tasas de entrada/salida específicas, etc.
+
+	\item Permite definir \emph{templates}, es decir, imágenes de distintas máquinas virtuales, a partir de las cuales crear nuevas instancias cuando se necesita aumentar la cantidad de nodos en el sistema del cliente.
+
+	\item Permite escalar instantáneamente el sistema del cliente instanciando decenas, centenas o miles de máquinas virtuales desde una consola administrativa accedida desde la web, o automáticamente a través de un API.
+
+	\item Permite elegir la ubicación geográfica de las máquinas virtuales entre distintos datacenters ubicados en distintos en distintas ciudades o incluso países para agregar redundancia al sistema y reducir el impacto de desastres naturales.
+
+	\item Funciones adicionales como balanceo de carga automático, la posibilidad de ofertar en remates de horas de procesamiento no utilizadas en algunas máquinas virtuales ociosas, solicitud de números de IP de forma dinámica, monitoreo de la salud de las máquinas virtuales, etc.
+
+	\item Integración con otros servicios de Amazon como almacenamiento masivo de datos, redes de contenido, caches, bases de datos, etc.
+\end{itemize}
+
+La ventaja más grande de Amazon EC2 es el nivel de control que uno tiene sobre casi cualquier detalle imaginable de las máquinas virtuales y la infraestructura en la que éstas yacen. Esto resulta ideal para proyectos grandes donde pequeños ajustes representan grandes ahorros en costos y mejoras en performance.
+
+Por otro lado, el nivel de complejidad y la cantidad de decisiones que hacen falta tomar a la hora de \emph{deployear} una aplicación a Amazon EC2 hace que resulte poco conveniente para proyectos pequeños, como aplicaciones web que se utilizan una única vez o emprendimientos que recién comienzan.
 
 
 \subsubsection{Rackspace}
