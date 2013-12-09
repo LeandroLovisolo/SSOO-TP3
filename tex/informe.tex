@@ -375,12 +375,12 @@ MongoHQ es una solución \emph{PaaS} que ofrece un cluster MongoDB completamente
 
 Es un servicio ideal para equipos que necesitan disponer rápidamente de un cluster MongoDB sin perder tiempo en instalar y administrar un cluster ellos mismos, para proyectos que desean evaluar MongoDB o prototipar una solución sin grandes inversiones de tiempo y esfuerzo y para emprendimientos que necesitan salir rápido al mercado.
 
-Su principal desventaja es que es menos flexible que un servicio que ofrece más granularidad y que se encarece rápidamente a medida que crece el volúmen de datos procesados comparado con mantener un cluster propio sobre una solución \emph{IaaS} como Amazon EC2. Por estos motivos MongoHQ no es una opción recomendable para proyectos grandes.
+Su principal desventaja es que es menos flexible que un servicio que ofrece más granularidad y que se encarece rápidamente a medida que crece el volumen de datos procesados comparado con mantener un cluster propio sobre una solución \emph{IaaS} como Amazon EC2. Por estos motivos MongoHQ no es una opción recomendable para proyectos grandes.
 
 
 \subsubsection{MongoLab}
 
-Este proveedor ofrece dos tipos de servicio para nuestra solución: sobre hardware compartido o dedicado. Aquí podemos elegir según nuestras preferencias, teniendo en cuenta que sobre las VM's dedicadas tenemos más libertades y más garantías. El hosting en todos los casos se realiza con alguno de los proveedores de infraestructura maś destacados del mercado (Amazon, Rackspace, Microsoft, y otros).
+Este proveedor \emph{PaaS} ofrece dos tipos de servicio para nuestra solución: sobre hardware compartido o dedicado. Aquí podemos elegir según nuestras preferencias, teniendo en cuenta que sobre las máquinas virtuales dedicadas tenemos más libertades y más garantías. El hosting en todos los casos se realiza con alguno de los proveedores de infraestructura maś destacados del mercado (Amazon, Rackspace, Microsoft, y otros).
 
 MongoLab tiene muchos planes prearmados para elegir, y nos permite elegir sobre cuál de los distintos proveedores con los cuales trabajan queremos hostear nuestra solución. Esto nos permitiría tener nuestros datos en MongoDB en los equipos del mismo proveedor que otras potenciales aplicaciones.
 
@@ -390,11 +390,12 @@ Si bien no cuenta con personal de monitoreo y administración de base de datos c
 
 MongoLab también posee una interfaz web sencilla de usar en la cuál se puede administrar las bases de datos y realizar querys a estas.
 
+
 \subsection{Proveedor recomendado}
 
-Para nuestra aplicación, la mejor elección sería un servicio PaaS. Al utilizar como plataforma MongoDB (solo necesitamos utilizar querys sobre MongoDB), un servicio PaaS brinda la posibilidad de cargar nuestros scripts sin pérdida de tiempo alguna, evitando el mantenimiento y configuración del software necesario para correr una máquina virtual como pasaría con otros servicios.
+Recomendamos inicialmente realizar el análisis del cuerpo de datos sobre un cluster provisto por MongoHQ para poder comenzar rápidamente sin perder tiempo administrando el software MongoDB. Además, ésta solución nos permite experimentar con distintos parámetros a nivel cluster (memoria RAM, cantidad de nodos, etc.) para darnos una mejor idea de nuestras necesidades de performance.
 
-Además de los beneficios de tener una plataforma lista, el servicio PaaS ofrece monitoreo de las bases de datos y escalabilidad costeable.
+Considerando que se espera un crecimiento lineal del volumen de datos entre año y año, es posible que eventualmente el costo de MongoHQ y los ajustes finos imposibles de alcanzar con este proveedor justifiquen migrar a una solución \emph{IaaS}. En particular, recomendamos Amazon EC2, ya que es el que más barato resulta a gran escala y es el que mejor permite aprovechar el aprendizaje obtenido durante la experimentación con el cluster en MongoHQ, al poder ahora tener acceso a ajustes en el cluster tan finos como uno quiera.
 
 
 \subsection{De la nube al hardware propio}
@@ -405,7 +406,7 @@ En principio hay que tener en cuenta que al momento de hacer el cambio definitiv
 
 Algo muy importante es el costo que implica este cambio: la adquisición de todo el equipamiento necesario, que no sólo consiste en los servidores en sí, si no también en el lugar físico del data center, sistemas de refrigeración, personal de mantenimiento y seguridad, y una larga lista de etcéteras. Este costo se puede amortizar en varios años, pero de todas formas es una inversión muy grande que se realiza en un lapso corto de tiempo, y se pierde la constancia que nos ofrece un servicio en la nube con precios que escalan de forma gradual. Y no sólo es un problema de costos del equipamiento adquirido, también hay que encargarse de que el mantenimiento del mismo se haga de manera correcta, un problema del que antes no teníamos que preocuparnos.
 
-Para analizar el caso particular de nuestra implementación, tenemos que tener en cuenta que para aprovechar MongoDB nos conviene tener un crecimiento horizontal en función de la cantidad de datos a procesar. En el caso de la solución en la nube, era algo muy simple de implementar, pues las VM's se pueden crear a demanda en cuestión de segundos y de forma transparente. Pero cuando se tiene hardware propio hay que tener en cuenta que el crecimiento de la infraestructura no es tan simple de lograr; se pueden tener los recursos computacionales virtualizados, pero será necesario adquirir más hardware eventualmente.
+Para analizar el caso particular de nuestra implementación, tenemos que tener en cuenta que para aprovechar MongoDB nos conviene tener un crecimiento horizontal en función de la cantidad de datos a procesar. En el caso de la solución en la nube, era algo muy simple de implementar, pues las máquinas virtuales se pueden crear a demanda en cuestión de segundos y de forma transparente. Pero cuando se tiene hardware propio hay que tener en cuenta que el crecimiento de la infraestructura no es tan simple de lograr; se pueden tener los recursos computacionales virtualizados, pero será necesario adquirir más hardware eventualmente.
 
 También hay que considerar que en algunos momentos, el procesamiento puede alcanzar picos durante los cuales sea necesario aumentar la capacidad de procesamiento del sistema. Esto es algo que también sucede de forma transparente en caso de ser necesario cuando estamos trabajando en la nube, pero no así cuando tenemos nuestros propios data centers. Nuevamente, podemos tener los recursos virtualizados, pero el hardware tiene un límite y es algo que ya no podemos obviar.
 
