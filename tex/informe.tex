@@ -327,12 +327,12 @@ Amazon Elastic Cloud Computing, o EC2, es uno de los proveedores \emph{IaaS} má
 
 	\item Funciones adicionales como balanceo de carga automático, la posibilidad de ofertar en remates de horas de procesamiento no utilizadas en algunas máquinas virtuales ociosas, solicitud de números de IP de forma dinámica, monitoreo de la salud de las máquinas virtuales, etc.
 
-	\item Integración con otros servicios de Amazon como almacenamiento masivo de datos, redes de contenido, caches, bases de datos, etc.
+	\item Integración con otros servicios de Amazon Web Services como almacenamiento masivo de datos, redes de contenido, caches, bases de datos, etc.
 \end{itemize}
 
 La ventaja más grande de Amazon EC2 es el nivel de control que uno tiene sobre casi cualquier detalle imaginable de las máquinas virtuales y la infraestructura en la que éstas yacen. Esto resulta ideal para proyectos grandes donde pequeños ajustes representan grandes ahorros en costos y mejoras en performance.
 
-Por otro lado, el nivel de complejidad y la cantidad de decisiones que hacen falta tomar a la hora de \emph{deployear} una aplicación a Amazon EC2 hace que resulte poco conveniente para proyectos pequeños, como aplicaciones web que se utilizan una única vez o emprendimientos que recién comienzan.
+Por otro lado, el nivel de complejidad y la cantidad de decisiones que hacen falta tomar a la hora de desplegar una aplicación en Amazon EC2 hace que resulte poco conveniente para proyectos pequeños, como aplicaciones web que se utilizan una única vez o emprendimientos que recién comienzan.
 
 
 \subsubsection{Rackspace}
@@ -346,21 +346,30 @@ Un punto fuerte de Rackspace es su soporte 24\times7\times365.
 
 \subsubsection{Linode}
 
-Pendiente.
+Linode ofrece diferentes planes, los cuales van desde \$20 a \$800 mensuales. Los planes varían en cantidad de RAM, almacenamiento, datos para transferencia y prioridad de ejecución. El poder de procesamiento de los planes es igual en todos, pero tienen menor prioridad de ejecución que otros según el plan contratado.
+
+Además de buenos planes, Linode ofrece tanto su implementación de balanceo de nodos inteligentes como la posibilidad de configurar el balanceo manualmente, una API para realizar tareas diversas de administración, soporte para múltiples imágenes con configuraciones individuales, IP's múltiples y la posibilidad de elegir entre distintos data centers en distintos lugares para reducir la latencia.
 
 
 \subsubsection{MongoHQ}
 
-MongoHQ ofrece los siguientes servicios:
+MongoHQ es una solución \emph{PaaS} que ofrece un cluster MongoDB completamente administrado por el proveedor. Sus principales características son:
 
 \begin{itemize}
-	\item Frontend web para realizar consultas desde esta.
-	\item Herramientas de monitoreo y optimización con detalle sobre los recursos utilizados.
-	\item Escalado automático de recursos sin downtime (RAM, CPU, Disk I/O).
-	\item Monitoreo de las bases de datos para asegurar buen funcionamiento.
-	\item Posibilidad de utilizar SSD's.
-	\item Opciones iniciales baratas, \$15 y \$49 mensual y otras más completas desde \$250.
+	\item Permite customizar la capacidad de almacenamiento del cluster y el tipo de almacenamiento (HDD vs SSD.)
+
+	\item Ofrece una consola web para administrar el cluster, hacer consultas, realizar backups, etc.
+
+	\item Ofrece herramientas de monitoreo y control de sanidad adicionales que normalmente no están disponibles en una instalación MongoDB por defecto.
+
+	\item Permite escalar automáticamente el cluster sin downtime, agregando almacenamiento o nodos adicionales de acuerdo a lo necesario.
+
+	\item Ofrece planes tanto para emprendimientos pequeños como para proyectos grandes.
 \end{itemize}
+
+Es un servicio ideal para equipos que necesitan disponer rápidamente de un cluster MongoDB sin perder tiempo en instalar y administrar un cluster ellos mismos, para proyectos que desean evaluar MongoDB o prototipar una solución sin grandes inversiones de tiempo y esfuerzo y para emprendimientos que necesitan salir rápido al mercado.
+
+Su principal desventaja es que es menos flexible que un servicio que ofrece más granularidad y que se encarece rápidamente a medida que crece el volúmen de datos procesados comparado con mantener un cluster propio sobre una solución \emph{IaaS} como Amazon EC2. Por estos motivos MongoHQ no es una opción recomendable para proyectos grandes.
 
 
 \subsubsection{MongoLab}
