@@ -335,18 +335,18 @@ La ventaja más grande de Amazon EC2 es el nivel de control que uno tiene sobre 
 Por otro lado, el nivel de complejidad y la cantidad de decisiones que hacen falta tomar a la hora de desplegar una aplicación en Amazon EC2 hace que resulte poco conveniente para proyectos pequeños, como aplicaciones web que se utilizan una única vez o emprendimientos que recién comienzan.
 
 
-\subsubsection{Rackspace}
+\subsubsection{Rackspace Cloud}
 
-Es otro proveedor de \emph{Iaas} muy popular que ofrece una cantidad enorme de planes armados para poder elegir uno que se acomode a las necesidades sin problema alguno. Permite elegir muchos detalles de las VM's a solicitar, incluyendo la posibilidad de tener el storage sobre SSD, y varias opciones de SO. También se puede elegir tener hardware dedicado en lugar de virtual, lo cual puede significar un aumento de performance por un costo adicional. También ofrece tener una nube híbrida con parte del hardware dedicado y el resto en una nube pública para compartir el acceso.
+Es otro proveedor de \emph{IaaS} con un conjunto de características bastante similar al de Amazon EC2. Su principal diferencia es que ofrece más opciones para customizar el hardware físico donde corren las máquinas virtuales y la ubicación del mismo. En particular, permite correr las máquinas virutales en el hardware del proveedor, en el hardware del cliente el en datacenter del proveedor, en el hardware del cliente en el datacenter del cliente o de forma híbrida combinando ambas posibilidades.
 
-Rackspace utiliza interfaces open source para administrar los servicios proveídos, con lo cual no es necesario tener que aprender a usar contenido propietario, ni depender del mismo.
+Otra diferencia importante es que su plataforma se basa en componentes open source que no atan al cliente a un proveedor en particular. Además, ofrece un nivel de soporte técnico mucho más personal que Amazon EC2.
 
-Un punto fuerte de Rackspace es su soporte $24 \times 7 \times 365$.
+Resulta ideal para proyectos medianos a grandes en los que no se puede depender de un sólo proveedor o que se requiere interactuar con hardware especial en un datacenter propio, ya sea por cuestiones legales o por tratarse de aplicaciones especiales o de misión crítica, y para cualquier proyecto que se beneficie de un nivel de servicio de soporte técnico más abarcativo.
 
 
 \subsubsection{Linode}
 
-Linode es un proveedor de máquinas virtuales que se destaca en la simplicidad de sus ofertas respecto a otros servicios en el mismo espacio como Amazon EC2 o la propuesta de Rackspace. Sus planes varían en cantidad de RAM, almacenamiento, límites de transferencia mensuales y prioridad de ejecución. El poder de procesamiento de los planes es igual en todos, pero tienen menor prioridad de ejecución que otras máquinas virtuales en el mismo servidor físico según el plan contratado.
+Linode es un proveedor de máquinas virtuales que se destaca en la simplicidad de sus ofertas respecto a otros servicios en el mismo espacio como Amazon EC2 o Rackspace Cloud. Sus planes varían en cantidad de RAM, almacenamiento, límites de transferencia mensuales y prioridad de ejecución. El poder de procesamiento de los planes es igual en todos, pero tienen menor prioridad de ejecución que otras máquinas virtuales en el mismo servidor físico según el plan contratado.
 
 Linode ofrece tanto su implementación de balanceo de carga inteligente como la posibilidad de configurar el balanceo manualmente, una API para realizar tareas diversas de administración, soporte para múltiples imágenes con configuraciones individuales, IPs múltiples y la posibilidad de elegir entre distintos data centers en distintos lugares para reducir la latencia y aumentar disponibilidad ante desastres naturales.
 
