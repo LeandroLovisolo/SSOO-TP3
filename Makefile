@@ -15,7 +15,7 @@ bundle:
 	mkdir $(BUNDLE_DIRECTORY)
 	cp informe.pdf $(BUNDLE_DIRECTORY)
 	make clean
-	cp backend game Makefile README.md tex tp2.pdf $(BUNDLE_DIRECTORY) -r
+	cp code data tex Makefile enunciado.pdf README.md $(BUNDLE_DIRECTORY) -r
 	tar zcf $(BUNDLE_FILENAME) $(BUNDLE_DIRECTORY)
 	rm -rf $(BUNDLE_DIRECTORY)
 
