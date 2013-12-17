@@ -14,6 +14,7 @@
 \usepackage{float}
 \usepackage{algpseudocode}
 \usepackage{enumitem} % Provee macro \setlist
+\usepackage{hyperref}
 \usepackage[toc, page]{appendix}
 
 
@@ -279,7 +280,7 @@ Cloud Computing es un término muy discutido durante los últimos años, y la ca
 
 \subsection{Definición de \emph{Cloud Computing}}
 
-Una nube consiste en un conjunto de computadoras conectadas y virtualizadas que son dinámicamente proveídas y presentadas como uno o más recursos computacionales unificados. Los clientes se conectan a esta nube para poder hacer uso del servicio que se provee.
+Las definiciones a continuación fueron tomadas y adaptadas de \cite{taxonomy}. Una nube consiste en un conjunto de computadoras conectadas y virtualizadas que son dinámicamente proveídas y presentadas como uno o más recursos computacionales unificados. Los clientes se conectan a esta nube para poder hacer uso del servicio que se provee.
 
 En general, los servicios de cloud computing comprenden lo siguiente:
 
@@ -314,7 +315,7 @@ A continuación describimos brevemente algunos de los servicios más populares a
 
 \subsubsection{Amazon EC2}
 
-Amazon Elastic Cloud Computing, o EC2, es uno de los proveedores \emph{IaaS} más avanzados del mercado. Sus principales características:
+Amazon Elastic Cloud Computing \cite{amazon}, o EC2, es uno de los proveedores \emph{IaaS} más avanzados del mercado. Sus principales características:
 
 \begin{itemize}
 	\item Permite customizar profundamente los parámetros de las máquinas virtuales, ya sea memoria RAM, tipo de CPU, cantidad de núcleos, tipo y espacio de almacenamiento, sistema operativo, software preinstalado, hardware especial como GPUs y placas de red de tasas de entrada/salida específicas, etc.
@@ -337,7 +338,7 @@ Por otro lado, el nivel de complejidad y la cantidad de decisiones que hacen fal
 
 \subsubsection{Rackspace Cloud}
 
-Es otro proveedor de \emph{IaaS} con un conjunto de características bastante similar al de Amazon EC2. Su principal diferencia es que ofrece más opciones para customizar el hardware físico donde corren las máquinas virtuales y la ubicación del mismo. En particular, permite correr las máquinas virutales en el hardware del proveedor, en el hardware del cliente el en datacenter del proveedor, en el hardware del cliente en el datacenter del cliente o de forma híbrida combinando ambas posibilidades.
+Es otro proveedor de \emph{IaaS} con un conjunto de características bastante similar al de Amazon EC2 (ver \cite{rackspace}.) Su principal diferencia es que ofrece más opciones para customizar el hardware físico donde corren las máquinas virtuales y la ubicación del mismo. En particular, permite correr las máquinas virutales en el hardware del proveedor, en el hardware del cliente el en datacenter del proveedor, en el hardware del cliente en el datacenter del cliente o de forma híbrida combinando ambas posibilidades.
 
 Otra diferencia importante es que su plataforma se basa en componentes open source que no atan al cliente a un proveedor en particular. Además, ofrece un nivel de soporte técnico mucho más personal que Amazon EC2.
 
@@ -346,7 +347,7 @@ Resulta ideal para proyectos medianos a grandes en los que no se puede depender 
 
 \subsubsection{Linode}
 
-Linode es un proveedor de máquinas virtuales que se destaca en la simplicidad de sus ofertas respecto a otros servicios en el mismo espacio como Amazon EC2 o Rackspace Cloud. Sus planes varían en cantidad de RAM, almacenamiento, límites de transferencia mensuales y prioridad de ejecución. El poder de procesamiento de los planes es igual en todos, pero tienen menor prioridad de ejecución que otras máquinas virtuales en el mismo servidor físico según el plan contratado.
+Linode \cite{linode} es un proveedor de máquinas virtuales que se destaca en la simplicidad de sus ofertas respecto a otros servicios en el mismo espacio como Amazon EC2 o Rackspace Cloud. Sus planes varían en cantidad de RAM, almacenamiento, límites de transferencia mensuales y prioridad de ejecución. El poder de procesamiento de los planes es igual en todos, pero tienen menor prioridad de ejecución que otras máquinas virtuales en el mismo servidor físico según el plan contratado.
 
 Linode ofrece tanto su implementación de balanceo de carga inteligente como la posibilidad de configurar el balanceo manualmente, una API para realizar tareas diversas de administración, soporte para múltiples imágenes con configuraciones individuales, IPs múltiples y la posibilidad de elegir entre distintos data centers en distintos lugares para reducir la latencia y aumentar disponibilidad ante desastres naturales.
 
@@ -359,7 +360,7 @@ Sin embargo para proyectos más grandes resulta conveniente un servicio como Ama
 
 \subsubsection{MongoHQ}
 
-MongoHQ es una solución \emph{PaaS} que ofrece un cluster MongoDB completamente administrado por el proveedor. Sus principales características son:
+MongoHQ \cite{mongohq} es una solución \emph{PaaS} que ofrece un cluster MongoDB completamente administrado por el proveedor. Sus principales características son:
 
 \begin{itemize}
 	\item Permite customizar la capacidad de almacenamiento del cluster y el tipo de almacenamiento (HDD vs SSD.)
@@ -380,7 +381,7 @@ Su principal desventaja es que es menos flexible que un servicio que ofrece más
 
 \subsubsection{MongoLab}
 
-Este proveedor \emph{PaaS} ofrece dos tipos de servicio para nuestra solución: sobre hardware compartido o dedicado. Aquí podemos elegir según nuestras preferencias, teniendo en cuenta que sobre las máquinas virtuales dedicadas tenemos más libertades y más garantías. El hosting en todos los casos se realiza con alguno de los proveedores de infraestructura maś destacados del mercado (Amazon, Rackspace, Microsoft, y otros).
+Este proveedor \emph{PaaS} ofrece dos tipos de servicio para nuestra solución: sobre hardware compartido o dedicado (ver \cite{mongolab}.) Aquí podemos elegir según nuestras preferencias, teniendo en cuenta que sobre las máquinas virtuales dedicadas tenemos más libertades y más garantías. El hosting en todos los casos se realiza con alguno de los proveedores de infraestructura maś destacados del mercado (Amazon, Rackspace, Microsoft, y otros).
 
 MongoLab tiene muchos planes prearmados para elegir, y nos permite elegir sobre cuál de los distintos proveedores con los cuales trabajan queremos hostear nuestra solución. Esto nos permitiría tener nuestros datos en MongoDB en los equipos del mismo proveedor que otras potenciales aplicaciones.
 
@@ -409,6 +410,31 @@ Algo muy importante es el costo que implica este cambio: la adquisición de todo
 Para analizar el caso particular de nuestra implementación, tenemos que tener en cuenta que para aprovechar MongoDB nos conviene tener un crecimiento horizontal en función de la cantidad de datos a procesar. En el caso de la solución en la nube, era algo muy simple de implementar, pues las máquinas virtuales se pueden crear a demanda en cuestión de segundos y de forma transparente. Pero cuando se tiene hardware propio hay que tener en cuenta que el crecimiento de la infraestructura no es tan simple de lograr; se pueden tener los recursos computacionales virtualizados, pero será necesario adquirir más hardware eventualmente.
 
 También hay que considerar que en algunos momentos, el procesamiento puede alcanzar picos durante los cuales sea necesario aumentar la capacidad de procesamiento del sistema. Esto es algo que también sucede de forma transparente en caso de ser necesario cuando estamos trabajando en la nube, pero no así cuando tenemos nuestros propios data centers. Nuevamente, podemos tener los recursos virtualizados, pero el hardware tiene un límite y es algo que ya no podemos obviar.
+
+
+\begin{thebibliography}{9}
+
+\bibitem{taxonomy}
+	\emph{A Taxonomy and Survey of Cloud Computing Services}.
+	Bhaskar Prasar Rimal, Eunmi Choi, Ian Lumb.
+	2009 Fifth International Joint Conference on INC, IMS and IDC.
+
+\bibitem{amazon}
+	Amazon EC 2: \url{http://aws.amazon.com/ec2/}
+
+\bibitem{rackspace}
+	Rackspace Cloud: \url{http://rackspace.com/cloud/}
+
+\bibitem{linode}
+	Linode: \url{http://linode.com}
+
+\bibitem{mongohq}
+	MongoHQ: \url{http://mongohq.com}
+
+\bibitem{mongolab}
+	MongoLab: \url{http://mongolab.com}
+
+\end{thebibliography}
 
 
 \end{document}
